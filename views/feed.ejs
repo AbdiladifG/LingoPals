@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body {
+            background: #f0f2f5;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Video Section */
+        .video-section {
+            display: flex;
+            gap: 20px;
+            height: 30vh;
+        }
+
+        .video-container {
+            background: #1a1a1a;
+            border-radius: 10px;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            position: relative;
+        }
+
+        .video-controls {
+            position: absolute;
+            bottom: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .video-btn {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.2);
+            border: none;
+            border-radius: 20px;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Lower Section */
+        .lower-section {
+            display: flex;
+            gap: 20px;
+            height: calc(70vh - 40px);
+        }
+
+        /* Chat Section */
+        .chat-container {
+            flex: 1;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-header {
+            padding: 16px;
+            background: #4a90e2;
+            color: white;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .chat-messages {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .message {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .message.sent {
+            flex-direction: row-reverse;
+        }
+
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin: 0 10px;
+        }
+
+        .message-content {
+            background: #f0f2f5;
+            padding: 10px 15px;
+            border-radius: 20px;
+            max-width: 70%;
+        }
+
+        .sent .message-content {
+            background: #4a90e2;
+            color: white;
+        }
+
+        .chat-input {
+            padding: 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input input {
+            flex-grow: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            outline: none;
+        }
+
+        .chat-input button {
+            padding: 10px 20px;
+            background: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        /* Notes Section */
+        .notes-container {
+            flex: 1;
+            display: flex;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 200px;
+            background: #f5f5f5;
+            border-right: 1px solid #e0e0e0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar-header {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .new-note-btn {
+            padding: 5px 10px;
+            background: #007AFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .notes-list {
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .note-item {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            cursor: pointer;
+        }
+
+        .note-item:hover {
+            background: #ebebeb;
+        }
+
+        .note-item.active {
+            background: #e1e1e1;
+        }
+
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-header {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .note-editor {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .title-input {
+            font-size: 24px;
+            font-weight: 500;
+            border: none;
+            outline: none;
+            margin-bottom: 15px;
+        }
+
+        .content-input {
+            flex-grow: 1;
+            border: none;
+            outline: none;
+            resize: none;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Video Section -->
+        <div class="video-section">
+            <div class="video-container">
+                <div>User 1 Video</div>
+                <div class="video-controls">
+                    <button class="video-btn">Mute</button>
+                    <button class="video-btn">Camera</button>
+                </div>
+            </div>
+            <div class="video-container">
+                <div>User 2 Video</div>
+                <div class="video-controls">
+                    <button class="video-btn">Mute</button>
+                    <button class="video-btn">Camera</button>
+                </div>
+            </div>
+            <div class="video-container">
+                <div>User 3 Video</div>
+                <div class="video-controls">
+                    <button class="video-btn">Mute</button>
+                    <button class="video-btn">Camera</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lower Section -->
+        <div class="lower-section">
+            <!-- Chat Box -->
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h2>Chat</h2>
+                </div>
+                <div class="chat-messages" id="messageArea">
+                    <div class="message received">
+                        <img src="/api/placeholder/40/40" alt="User 1" class="profile-img">
+                        <div class="message-content">
+                            Hey! How are you?
+                        </div>
+                    </div>
+                    <div class="message sent">
+                        <img src="/api/placeholder/40/40" alt="User 2" class="profile-img">
+                        <div class="message-content">
+                            I'm doing great, thanks! How about you?
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="messageInput" placeholder="Type a message...">
+                    <button onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+
+            <!-- Notes Section -->
+            <div class="notes-container">
+                <div class="sidebar">
+                    <div class="sidebar-header">
+                        <span style="font-weight: 500; font-size: 14px;">Notes</span>
+                        <button class="new-note-btn" onclick="createNewNote()">New</button>
+                    </div>
+                    <div class="notes-list" id="notesList">
+                    </div>
+                </div>
+                <div class="main-content">
+                    <div class="main-header">
+                        <span style="font-size: 13px; color: #666;" id="lastSaved"></span>
+                        <button class="save-btn">Save</button>
+                    </div>
+                    <div class="note-editor">
+                        <input type="text" class="title-input" placeholder="Title" id="titleInput">
+                        <textarea class="content-input" placeholder="Start writing..." id="contentInput"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chat Functions
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const messageArea = document.getElementById('messageArea');
+            
+            if (input.value.trim() === '') return;
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'message sent';
+            
+            messageDiv.innerHTML = `
+                <img src="/api/placeholder/40/40" alt="User 2" class="profile-img">
+                <div class="message-content">
+                    ${input.value}
+                </div>
+            `;
+            
+            messageArea.appendChild(messageDiv);
+            messageArea.scrollTop = messageArea.scrollHeight;
+            input.value = '';
+        }
+
+        document.getElementById('messageInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Notes Functions
+        let notes = [];
+        let currentNoteId = null;
+
+        function createNewNote() {
+            const note = {
+                id: Date.now(),
+                title: 'Untitled Note',
+                content: '',
+                date: new Date().toLocaleString()
+            };
+            notes.unshift(note);
+            currentNoteId = note.id;
+            updateNotesList();
+            loadNote(note);
+        }
+
+        function updateNotesList() {
+            const notesList = document.getElementById('notesList');
+            notesList.innerHTML = notes.map(note => `
+                <div class="note-item ${note.id === currentNoteId ? 'active' : ''}" onclick="loadNote(${note.id})">
+                    <div class="note-title">${note.title || 'Untitled Note'}</div>
+                    <div class="note-preview">${note.content}</div>
+                </div>
+            `).join('');
+        }
+
+        function loadNote(noteId) {
+            const note = notes.find(n => n.id === noteId);
+            if (note) {
+                currentNoteId = note.id;
+                document.getElementById('titleInput').value = note.title;
+                document.getElementById('contentInput').value = note.content;
+                updateNotesList();
+            }
+        }
+
+        // Initialize with a new note
+        createNewNote();
+    </script>
+</body>
+</html>

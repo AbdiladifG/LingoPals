@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinguaChat - Connect, Learn, Speak</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fafafa;
+        }
+        .page-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header and Navigation Bar */
+        header {
+            background-color: #fff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #262626;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin-left: 30px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #262626;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover {
+            color: #0095f6;
+        }
+
+        /* Jumbotron */
+        .jumbotron {
+            background-image: url("https://media.licdn.com/dms/image/C5612AQELOebChOJz0Q/article-cover_image-shrink_720_1280/0/1598891639073?e=2147483647&v=beta&t=LPr_HnQqMsXY7LIYCBjm2pPBeN9YdUZcuJy4wsOUF00"); /* Replace with actual image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center top;
+            color: black;
+            font-weight: bold;
+            text-align: center;
+            padding: 150px 20px;
+            margin-top: 80px;
+            border-radius: 10px;
+            height: 200px;
+        }
+        .jumbotron h1 {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .jumbotron p {
+            font-size: 1.2em;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .container h2 {
+            font-size: 2em;
+            color: #262626;
+            margin-bottom: 15px;
+        }
+        .container p {
+            color: #8e8e8e;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px 5px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #0095f6;
+            color: white;
+        }
+        .btn-secondary {
+            background-color: white;
+            color: #0095f6;
+            border: 1px solid #0095f6;
+        }
+        .menu-icon{
+            display:none;
+        }
+        
+        /* Responsive Menu */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                right: 0;
+                background-color: #fff;
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links li {
+                margin: 10px 0;
+            }
+            .menu-icon {
+                display: block;
+                font-size: 24px;
+                cursor: pointer;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="page-container">
+            <nav>
+                <div class="logo">LinguaChat</div>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/signup">Signup</a></li>
+                </ul>
+                <div class="menu-icon" onclick="toggleMenu()">☰</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Jumbotron Section -->
+    <div class="jumbotron">
+        <!-- <h1>Welcome to LinguaChat!</h1>
+        <p>Connect globally to learn and practice languages with native speakers.</p> -->
+    </div>
+
+    <!-- Main Content Section -->
+    <div class="page-container">
+        <div class="container">
+            <h2>Learn and Connect</h2>
+            <p>LinguaChat allows you to connect with people worldwide through video calls and chats, making it easy to learn new languages directly from native speakers. Join a global community, practice speaking, and refine your fluency in an engaging and interactive environment.</p>
+            <a href="/signup" class="btn btn-primary">Sign Up</a>
+            <a href="/login" class="btn btn-secondary">Log In</a>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector(".nav-links");
+            navLinks.classList.toggle("active");
+        }
+    </script>
+</body>
+</html>

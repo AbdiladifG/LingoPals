@@ -1,3 +1,6 @@
+## View Project
+1. Navigate to linguachat.up.railway.app
+
 ## Installation
 
 1. Clone repo
@@ -8,6 +11,4 @@
 1. run `node server.js`
 2. Navigate to `localhost:8080`
 
-## Credit
-
-Modified from Scotch.io's auth tutorial
+![](<Screenshot 2024-11-19 at 8.21.27 PM.png>)

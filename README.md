@@ -5,7 +5,7 @@ This is an app where users come to speak to other language learners to improve t
 Tech used: CSS, JavaScript, EJS, Node.js, Express, MongoDB, Passport
 
 ## View Project
-1. Navigate to linguachat.up.railway.app
+1. Navigate to https://linguachat.up.railway.app/
 
 ## Installation
 

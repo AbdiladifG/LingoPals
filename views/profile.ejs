@@ -3,388 +3,191 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LinguaChat - User Profile</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        background-color: #fafafa;
-      }
-      .page-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-      }
-      header {
-        background-color: #fff;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-      }
-      nav {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 0;
-      }
-      .logo {
-        font-size: 24px;
-        font-weight: bold;
-        color: #262626;
-      }
-      .nav-links {
-        display: flex;
-        list-style: none;
-      }
-      .nav-links li {
-        margin-left: 20px;
-      }
-      .nav-links a {
-        text-decoration: none;
-        color: #262626;
-      }
-      .menu-icon {
-        display: none;
-        font-size: 24px;
-        cursor: pointer;
-      }
-      .container {
-        max-width: 800px;
-        margin: 80px auto 0;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      }
-      .profile-header {
-        display: flex;
-        align-items: center;
-        margin-bottom: 20px;
-      }
-      .profile-pic {
-        width: 150px;
-        height: 150px;
-        border-radius: 50%;
-        object-fit: cover;
-        margin-right: 20px;
-      }
-      .profile-info h1 {
-        margin: 0 0 10px 0;
-        color: #262626;
-      }
-      .profile-info p {
-        margin: 5px 0;
-        color: #8e8e8e;
-      }
-      .edit-profile-btn {
-        background-color: #0095f6;
-        color: white;
-        border: none;
-        padding: 8px 16px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-weight: bold;
-      }
-      .posts {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 20px;
-        margin-top: 30px;
-      }
-      .post {
-        background-color: #fff;
-        border: 1px solid #dbdbdb;
-        border-radius: 5px;
-        overflow: hidden;
-      }
-      .post-image {
-        width: 100%;
-        height: 250px;
-        object-fit: cover;
-      }
-      .post-content {
-        padding: 10px;
-      }
-      .post-actions {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px;
-        border-top: 1px solid #dbdbdb;
-      }
-      .delete-post {
-        color: #ed4956;
-        cursor: pointer;
-      }
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 1001;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.4);
-      }
-      .modal-content {
-        background-color: #fefefe;
-        margin: 15% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-        max-width: 500px;
-        border-radius: 10px;
-      }
-      .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-        cursor: pointer;
-      }
-      .close:hover,
-      .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-      }
-
-      /* New styles for username form and language rooms */
-      .username-form {
-        margin-top: 20px;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      }
-
-      .username-form input {
-        width: 100%;
-        padding: 8px;
-        margin: 10px 0;
-        border: 1px solid #dbdbdb;
-        border-radius: 4px;
-        font-size: 14px;
-      }
-
-      .language-rooms {
-        margin-top: 20px;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      }
-
-      .language-rooms h2 {
-        margin-bottom: 20px;
-        color: #262626;
-      }
-
-      .room-buttons {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-      }
-
-      .room-button {
-        background-color: #0095f6;
-        color: white;
-        border: none;
-        padding: 15px 25px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-weight: bold;
-        transition: background-color 0.3s;
-      }
-
-      .room-button:hover {
-        background-color: #0085e0;
-      }
-
-      @media (max-width: 768px) {
-        .nav-links {
-          display: none;
-          flex-direction: column;
-          position: absolute;
-          top: 60px;
-          left: 0;
-          right: 0;
-          background-color: #fff;
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .nav-links.active {
-          display: flex;
-        }
-        .nav-links li {
-          margin: 10px 0;
-        }
-        .menu-icon {
-          display: block;
-        }
-        .profile-header {
-          flex-direction: column;
-          text-align: center;
-        }
-        .profile-pic {
-          margin-right: 0;
-          margin-bottom: 20px;
-        }
-        .room-buttons {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      .create-post-btn {
-        background-color: #0095f6;
-        color: white;
-        border: none;
-        padding: 8px 16px;
-        border-radius: 5px;
-        cursor: pointer;
-        font-weight: bold;
-        margin-top: 20px;
-      }
-
-      .modal-content form {
-        display: flex;
-        flex-direction: column;
-      }
-
-      .modal-content input,
-      .modal-content textarea {
-        margin-bottom: 10px;
-        padding: 8px;
-        border: 1px solid #dbdbdb;
-        border-radius: 4px;
-      }
-
-      .modal-content button {
-        align-self: flex-start;
-      }
-    </style>
+    <title>Dashboard - LingoPals</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="dashboard-styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/6.6.6/css/flag-icons.min.css"
+    />
   </head>
   <body>
-    <header>
-      <div class="page-container">
-        <nav>
-          <div class="logo">LinguaChat</div>
-          <ul class="nav-links">
-            <li><a href="/">Home</a></li>
-            <li><a href="/profile">Profile</a></li>
-            <li><a href="/feed">Explore</a></li>
-            <li><a href="/logout">Logout</a></li>
-          </ul>
-          <div class="menu-icon" onclick="toggleMenu()">☰</div>
-        </nav>
+    <!-- Navigation -->
+    <nav>
+      <div class="container nav-container">
+        <div class="logo">LingoPals</div>
+        <button class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/profile" class="active">Dashboard</a></li>
+          <li>
+            <a href="/profile" class="user-profile">
+              <img
+                src="https://api.dicebear.com/6.x/avataaars/svg?seed=John"
+                alt="Profile"
+                class="nav-profile-img"
+              />
+              <%= user.userName %>
+            </a>
+          </li>
+          <li><a href="/logout" class="btn-secondary">Logout</a></li>
+        </ul>
       </div>
-    </header>
+    </nav>
 
-    <div class="page-container">
-      <div class="container">
-        <div class="profile-header">
-          <img
-            src='<%= user.avatar %>'
-            alt="Profile Picture"
-            class="profile-pic"
-            id="profile-pic"
-          />
-          <div class="profile-info">
-            <h1>John Doe</h1>
-            <p>Username: <%= user.userName %></p>
-            <p>Email: <%= user.email %></p>
-            <button class="edit-profile-btn" onclick="openModal()">
-              Edit Profile Picture
-            </button>
-          </div>
-          <button class="create-post-btn" onclick="openCreatePostModal()">Create New Post</button>
-        </div>
-
-        <!-- New username form section -->
-        <div class="username-form">
-          <h2>Update Username</h2>
-          <form action="/update-username" method="POST">
-            <input 
-              type="text" 
-              name="username" 
-              placeholder="Enter new username" 
-              required 
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+      <ul class="mobile-nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/profile" class="active">Dashboard</a></li>
+        <li>
+          <a href="#" class="user-profile">
+            <img
+              src="https://api.dicebear.com/6.x/avataaars/svg?seed=John"
+              alt="Profile"
+              class="nav-profile-img"
             />
-            <button type="submit" class="edit-profile-btn">Update Username</button>
-          </form>
-        </div>
+            <%= user.userName %>
+          </a>
+        </li>
+        <li><a href="/logout" class="btn-secondary">Logout</a></li>
+      </ul>
+    </div>
 
-        <!-- New language rooms section -->
-        <div class="language-rooms">
-          <h2>Language Rooms</h2>
-          <div class="room-buttons">
-            <button class="room-button" onclick="window.location.href='/room/english'">English Room</button>
-            <button class="room-button" onclick="window.location.href='/room/spanish'">Spanish Room</button>
-            <button class="room-button" onclick="window.location.href='/room/french'">French Room</button>
-            <button class="room-button" onclick="window.location.href='/room/chinese'">Chinese Room</button>
+    <!-- Main Content -->
+    <main class="dashboard">
+      <div class="container">
+        <!-- Profile Section -->
+        <section class="profile-section">
+          <div class="profile-card">
+            <div class="profile-header">
+              <div class="profile-image">
+                <img
+                  src="https://api.dicebear.com/6.x/avataaars/svg?seed=John"
+                  alt="John Doe"
+                />
+                <button class="edit-profile-btn">
+                  <i class="fas fa-camera"></i>
+                </button>
+              </div>
+              <div class="profile-info">
+                <h1><%= user.userName %></h1>
+                <p class="username"><%= user.email %></p>
+                <div class="profile-stats">
+                  <div class="stat">
+                    <span class="stat-value">12</span>
+                    <span class="stat-label">Sessions</span>
+                  </div>
+
+                  <div class="stat">
+                    <span class="stat-value">28h</span>
+                    <span class="stat-label">Practice</span>
+                  </div>
+
+                  <div class="stat">
+                    <span class="stat-value"><%= user.selectedLanguage %></span>
+                    <span class="stat-label">Your target lanuage</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </section>
 
-    <div id="editProfileModal" class="modal">
-      <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2>Edit Profile Picture</h2>
-        <form id="profilePicForm" >
-          <input type="file" id="newProfilePic" accept="image/*" required />
-          <button type="submit" class="edit-profile-btn">
-            Upload New Picture
-          </button>
-        </form>
-      </div>
-    </div>
+        <!-- Language Rooms Section -->
+        <section class="rooms-section">
+          <h2>Language Rooms</h2>
+          <div class="rooms-grid">
+            <div class="room-card">
+              <span class=""
+                ><img src="/img/english.png" class="flag" alt=""
+              /></span>
 
-    <div id="createPostModal" class="modal">
-      <div class="modal-content">
-        <span class="close" onclick="closeCreatePostModal()">&times;</span>
-        <h2>Create New Post</h2>
-        <form id="createPostForm"  action="/post/createPost" enctype="multipart/form-data" method="POST">
-          <input type="file" id="postImage" accept="image/*" required name="file"/>
-          <textarea id="postCaption" placeholder="Write a caption..." required name="caption"></textarea>
-          <button type="submit" class="create-post-btn">Post</button>
-        </form>
+              <h3>English Room</h3>
+              <p>12 learners online</p>
+              <div class="room-details">
+                <span class="level">All Levels</span>
+                <span class="participants">
+                  <i class="fas fa-users"></i> 12/20
+                </span>
+              </div>
+              <a href="/room/english" class="join-room-btn">Join Room</a>
+            </div>
+
+            <div class="room-card">
+              <span class=""
+                ><img src="/img/spanish.png" class="flag" alt=""
+              /></span>
+              <h3>Spanish Room</h3>
+              <p>8 learners online</p>
+              <div class="room-details">
+                <span class="level">Beginner Friendly</span>
+                <span class="participants">
+                  <i class="fas fa-users"></i> 8/20
+                </span>
+              </div>
+              <a href="/room/spanish" class="join-room-btn">Join Room</a>
+            </div>
+
+            <div class="room-card">
+              <span class=""
+                ><img src="/img/french.png" class="flag" alt=""
+              /></span>
+              <h3>French Room</h3>
+              <p>5 learners online</p>
+              <div class="room-details">
+                <span class="level">Intermediate</span>
+                <span class="participants">
+                  <i class="fas fa-users"></i> 5/20
+                </span>
+              </div>
+              <a href="/room/french" class="join-room-btn">Join Room</a>
+            </div>
+
+            <div class="room-card">
+              <span class=""
+                ><img src="/img/mandarin.png" class="flag" alt=""
+              /></span>
+              <h3>Chinese Room</h3>
+              <p>15 learners online</p>
+              <div class="room-details">
+                <span class="level">All Levels</span>
+                <span class="participants">
+                  <i class="fas fa-users"></i> 15/20
+                </span>
+              </div>
+              <a href="/room/mandarin" class="join-room-btn">Join Room</a>
+            </div>
+          </div>
+        </section>
       </div>
-    </div>
+    </main>
 
     <script>
-      function toggleMenu() {
-        const navLinks = document.querySelector(".nav-links");
-        navLinks.classList.toggle("active");
-      }
+      // Mobile menu functionality
+      const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+      const mobileMenu = document.querySelector(".mobile-menu");
+      const mobileMenuLinks = document.querySelectorAll(".mobile-nav-links a");
 
-      function openModal() {
-        document.getElementById("editProfileModal").style.display = "block";
-      }
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("active");
+        mobileMenuBtn.querySelector("i").classList.toggle("fa-bars");
+        mobileMenuBtn.querySelector("i").classList.toggle("fa-times");
+      });
 
-      function closeModal() {
-        document.getElementById("editProfileModal").style.display = "none";
-      }
-
-      function openCreatePostModal() {
-        document.getElementById("createPostModal").style.display = "block";
-      }
-
-      function closeCreatePostModal() {
-        document.getElementById("createPostModal").style.display = "none";
-      }
-
-      window.onclick = function (event) {
-        if (event.target == document.getElementById("editProfileModal")) {
-          closeModal();
-        }
-        if (event.target == document.getElementById("createPostModal")) {
-          closeCreatePostModal();
-        }
-      };
+      mobileMenuLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.remove("active");
+          mobileMenuBtn.querySelector("i").classList.add("fa-bars");
+          mobileMenuBtn.querySelector("i").classList.remove("fa-times");
+        });
+      });
     </script>
   </body>
 </html>

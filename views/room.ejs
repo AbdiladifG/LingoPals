@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= language %> Room - LingoPals</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/room-styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="container nav-container">
+        <div class="logo">LingoPals</div>
+        <button class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-links">
+            <li><img class="nav_icon" src="/img/<%= language %>.png" alt=""></li>
+          <li>
+            <%= language %> Room
+        
+          </li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/profile">Dashboard</a></li>
+          
+          </li>
+          <li><a href="/profile" class="btn-secondary">Leave Room</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+      <ul class="mobile-nav-links">
+        <li>
+            <img class="nav_icon" src="/img/<%= language %>.png" alt="">
+        </li>
+        <li>
+            <%= language %> Room
+        </li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/profile">Dashboard</a></li>
+        <li>
+          <a href="/profile" class="user-profile">
+            <img
+              src="https://api.dicebear.com/6.x/avataaars/svg?seed=John"
+              alt="Profile"
+              class="nav-profile-img"
+            />
+            John Doe
+          </a>
+        </li>
+        <li><a href="#" class="btn-secondary">Leave Room</a></li>
+      </ul>
+    </div>
+
+    <main class="room">
+      <div class="container">
+        <!-- Video Grid -->
+        <section class="video-grid">
+          <div class="video-card">
+            <div class="video-wrapper">
+              <video
+                poster="https://api.dicebear.com/6.x/avataaars/svg?seed=User1"
+              ></video>
+              <div class="video-overlay">
+                <div class="user-info">
+                  <span class="user-name">Sarah Chen</span>
+                  <span class="user-level">Native Speaker</span>
+                </div>
+                <div class="video-controls">
+                  <button class="control-btn" title="Mute">
+                    <i class="fas fa-microphone"></i>
+                  </button>
+                  <button class="control-btn" title="Camera">
+                    <i class="fas fa-video"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="video-card">
+            <div class="video-wrapper">
+              <video
+                poster="https://api.dicebear.com/6.x/avataaars/svg?seed=User1"
+              ></video>
+              <div class="video-overlay">
+                <div class="user-info">
+                  <span class="user-name">Sarah Chen</span>
+                  <span class="user-level">Native Speaker</span>
+                </div>
+                <div class="video-controls">
+                  <button class="control-btn" title="Mute">
+                    <i class="fas fa-microphone"></i>
+                  </button>
+                  <button class="control-btn" title="Camera">
+                    <i class="fas fa-video"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          
+
+
+        
+
+          
+
+
+          <div class="video-card">
+            <div class="video-wrapper">
+              <video
+                poster="https://api.dicebear.com/6.x/avataaars/svg?seed=User2"
+              ></video>
+              <div class="video-overlay">
+                <div class="user-info">
+                  <span class="user-name">John Doe</span>
+                  <span class="user-level">Intermediate</span>
+                </div>
+                <div class="video-controls">
+                  <button class="control-btn" title="Mute">
+                    <i class="fas fa-microphone"></i>
+                  </button>
+                  <button class="control-btn" title="Camera">
+                    <i class="fas fa-video"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+       
+
+          <div class="video-card">
+            <div class="video-wrapper">
+              <video
+                poster="https://api.dicebear.com/6.x/avataaars/svg?seed=User3"
+              ></video>
+              <div class="video-overlay">
+                <div class="user-info">
+                  <span class="user-name">Maria Garcia</span>
+                  <span class="user-level">Advanced</span>
+                </div>
+                <div class="video-controls">
+                  <button class="control-btn" title="Mute">
+                    <i class="fas fa-microphone"></i>
+                  </button>
+                  <button class="control-btn" title="Camera">
+                    <i class="fas fa-video"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Interaction Section -->
+        <section class="interaction-section">
+          <!-- Chat Section -->
+          <div class="chat-section">
+            <div class="chat-header">
+              <h2><i class="fas fa-comments"></i> Chat</h2>
+              <span class="participants-count">3 participants</span>
+            </div>
+            <div class="chat-messages" id="chatMessages">
+              <div class="message">
+                <img
+                  src="https://api.dicebear.com/6.x/avataaars/svg?seed=User1"
+                  alt="Sarah"
+                  class="message-avatar"
+                />
+                <div class="message-content">
+                  <div class="message-header">
+                    <span class="message-author">Sarah Chen</span>
+                    <span class="message-time">10:30 AM</span>
+                  </div>
+                  <p>Hello everyone! How are you today?</p>
+                </div>
+              </div>
+              <div class="message own-message">
+                <img
+                  src="https://api.dicebear.com/6.x/avataaars/svg?seed=John"
+                  alt="John"
+                  class="message-avatar"
+                />
+                <div class="message-content">
+                  <div class="message-header">
+                    <span class="message-author">You</span>
+                    <span class="message-time">10:31 AM</span>
+                  </div>
+                  <p>Hi Sarah! I'm doing great, thanks!</p>
+                </div>
+              </div>
+            </div>
+            <div class="chat-input-wrapper">
+              <input
+                type="text"
+                id="chatInput"
+                placeholder="Type your message..."
+              />
+              <button class="send-btn">
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Notes Section -->
+          <div class="notes-section">
+            <div class="notes-header">
+              <h2><i class="fas fa-sticky-note"></i> Notes</h2>
+              <button class="new-note-btn">
+                <i class="fas fa-plus"></i> New Note
+              </button>
+            </div>
+            <div class="notes-sidebar">
+              <div class="note-item active">
+                <div class="note-title">Vocabulary</div>
+                <div class="note-preview">New words learned today...</div>
+                <div class="note-date">Just now</div>
+              </div>
+              <div class="note-item">
+                <div class="note-title">Grammar Rules</div>
+                <div class="note-preview">Present perfect tense...</div>
+                <div class="note-date">Yesterday</div>
+              </div>
+            </div>
+            <div class="note-editor">
+              <input
+                type="text"
+                class="note-title-input"
+                placeholder="Note title"
+              />
+              <textarea
+                class="note-content"
+                placeholder="Start typing your notes..."
+              ></textarea>
+              <div class="note-footer">
+                <span class="last-saved">Last saved: Just now</span>
+                <button class="save-note-btn">Save</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script>
+      // Mobile menu functionality
+      const mobileMenuBtn = document.querySelector(".mobile-menu-btn");
+      const mobileMenu = document.querySelector(".mobile-menu");
+      const mobileMenuLinks = document.querySelectorAll(".mobile-nav-links a");
+
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("active");
+        mobileMenuBtn.querySelector("i").classList.toggle("fa-bars");
+        mobileMenuBtn.querySelector("i").classList.toggle("fa-times");
+      });
+
+      mobileMenuLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.remove("active");
+          mobileMenuBtn.querySelector("i").classList.add("fa-bars");
+          mobileMenuBtn.querySelector("i").classList.remove("fa-times");
+        });
+      });
+
+      // Video controls functionality
+      document.querySelectorAll(".control-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const icon = this.querySelector("i");
+          if (icon.classList.contains("fa-microphone")) {
+            icon.classList.toggle("fa-microphone-slash");
+          } else if (icon.classList.contains("fa-video")) {
+            icon.classList.toggle("fa-video-slash");
+          }
+        });
+      });
+
+      // Chat functionality
+      const chatInput = document.getElementById("chatInput");
+      const chatMessages = document.getElementById("chatMessages");
+
+      document
+        .querySelector(".send-btn")
+        .addEventListener("click", sendMessage);
+      chatInput.addEventListener("keypress", (e) => {
+        if (e.key === "Enter") sendMessage();
+      });
+
+      function sendMessage() {
+        if (!chatInput.value.trim()) return;
+
+        const messageHTML = `
+                <div class="message own-message">
+                    <img src="https://api.dicebear.com/6.x/avataaars/svg?seed=John" alt="John" class="message-avatar">
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="message-author">You</span>
+                            <span class="message-time">${new Date().toLocaleTimeString(
+                              [],
+                              { hour: "2-digit", minute: "2-digit" }
+                            )}</span>
+                        </div>
+                        <p>${chatInput.value}</p>
+                    </div>
+                </div>
+            `;
+
+        chatMessages.insertAdjacentHTML("beforeend", messageHTML);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        chatInput.value = "";
+      }
+    </script>
+  </body>
+</html>

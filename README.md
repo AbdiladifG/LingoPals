@@ -1,3 +1,9 @@
+## LinguaChat
+LingoPals is an app where users can learn languages better by joining video chat rooms, practicing with native speakers, and building a community with other language learners.
+
+
+## Tech Used
+Node.js, Express, MongoDB, JavaScript, CSS, EJS
 ## View Project
 1. Navigate to linguachat.up.railway.app
 
@@ -11,4 +17,5 @@
 1. run `node server.js`
 2. Navigate to `localhost:8080`
 
-![](<Screenshot 2024-11-19 at 8.21.27 PM.png>)
+![image](https://github.com/user-attachments/assets/4977c811-56f0-40a3-b100-3836058f0177)
+

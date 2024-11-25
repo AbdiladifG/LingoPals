@@ -1,11 +1,11 @@
-## LinguaChat
+## LingoPals
 LingoPals is an app where users can learn languages better by joining video chat rooms, practicing with native speakers, and building a community with other language learners.
 
 
 ## Tech Used
 Node.js, Express, MongoDB, JavaScript, CSS, EJS
 ## View Project
-1. Navigate to linguachat.up.railway.app
+1. Navigate to https://lingopals.up.railway.app/
 
 ## Installation
 
